@@ -8,6 +8,8 @@ A small Windows tray-free desktop tool that manages the [DSH (DeepSeek Harness)]
 **start / restart / open Web UI / check for updates / update**, and it **works with both WSL2 and native Windows installs of DSH**.
 
 > 中文说明: [README.md](README.md)
+>
+> ✅ Works with the latest DSH **0.1.2-rc.1**, including the new browser token auth (the launcher always opens the Web UI with the freshest token).
 
 ![Running](docs/screenshots/wsl-running.png)
 
@@ -34,6 +36,7 @@ This launcher puts all of that in one window: status at a glance, one click per 
 - **Auto-detects the runtime**: looks for `dsh` in a WSL distro first, then in the Windows global npm prefix. You can also pin it.
 - **Start / restart** wait until the port actually answers (up to 120 s) before reporting success.
 - **Open Web UI**: if the server is up, it just opens the browser (no restart); if it is down, it starts it first. This is the fix for "closed the tab, can't get back in".
+- **Supports the DSH 0.1.2+ browser auth (token)**: starting with DSH 0.1.2, the Web UI requires a token. Before every open, the launcher re-reads the token URL printed in the latest server log — even if DSH was restarted outside the launcher — so you never hit "authentication required". After the first login the browser cookie lasts 30 days with token-free access.
 - **Check / apply updates**: reads the installed version and queries npm for the latest, with full semver comparison (including `-rc.1` style prereleases); npm output streams into the log pane while updating.
 - **Live status and logs**: port, PID, DSH version, update hint; log tail refreshes continuously, error lines are highlighted, one-click copy.
 - **High-DPI and dark UI**: layout scales with the system DPI (text is no longer clipped on 200% displays); the palette is contrast-checked against WCAG 2.2 AA.

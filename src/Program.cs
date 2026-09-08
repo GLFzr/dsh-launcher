@@ -137,7 +137,7 @@ namespace DshLauncher
         }
 
         /// <summary>当前版本号。</summary>
-        public const string AppVersion = "v4.0";
+        public const string AppVersion = "v4.1";
 
         /// <summary>DSH 的 npm 包名。</summary>
         public const string DshPackage = "@deepseek-ai/dsh";
@@ -310,6 +310,9 @@ namespace DshLauncher
         {
             try
             {
+                // 先实时同步远端日志: 日志副本只在启动/重启时刷新, 若 dsh 在启动器之外
+                // 被重启过, 副本里就是旧 token, 直接用会被 401 拒绝。
+                try { if (Backend != null) Backend.SyncLog(); } catch { }
                 string log = Proc.Tail(LogCopyPath, 60);
                 var ms = Regex.Matches(log, "http://127\\.0\\.0\\.1:" + Port + "/?(\\?[^\\s\"']*)?");
                 for (int i = ms.Count - 1; i >= 0; i--)
