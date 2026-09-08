@@ -135,7 +135,7 @@ DSH-Launcher.exe [选项]
 `--probe` 与 `--check-update` 的结果是 JSON，方便脚本消费：
 
 ```json
-{"action":"probe","env":"WSL · Ubuntu","port":3080,"running":true,"url":"http://127.0.0.1:3080","pid":1004291}
+{"action":"probe","env":"WSL · Ubuntu","port":3080,"running":true,"url":"http://127.0.0.1:3080","openUrl":"http://127.0.0.1:3080","pid":1004291}
 {"action":"check-update","env":"WSL · Ubuntu","installed":"0.1.1-rc.1","latest":"0.1.2-rc.1","state":1,"update":true,"error":""}
 ```
 
