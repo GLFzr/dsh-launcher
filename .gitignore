@@ -1,0 +1,13 @@
+# 构建产物
+dist/
+*.exe
+*.pdb
+
+# 运行时产物
+logs/
+launcher.json
+
+# 编辑器
+.vs/
+.idea/
+*.user

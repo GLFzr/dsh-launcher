@@ -1,0 +1,8 @@
+{
+  "_说明": "把本文件改名为 launcher.json 放在 DSH-Launcher.exe 同目录即可生效; 环境变量优先级更高",
+  "mode": "auto",
+  "port": 3080,
+  "wslDistro": "",
+  "wslStartScript": "",
+  "dshHome": ""
+}
